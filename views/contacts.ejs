@@ -1,0 +1,45 @@
+<%- include('layouts/header') %>
+<center>
+  <h1>All Contacts Data</h1>
+</center>
+<br />
+<br />
+<a href="/contact/add" class="btn btn-primary">Tambah Kontak</a>
+<br />
+<br />
+
+<% if(msg.length !== 0){ %>
+<div class="alert alert-success"><%= msg %></div>
+<% } %>
+
+<table
+  id="table-data"
+  class="table table-striped table-bordered nowrap"
+  style="width: 100%"
+>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Nama</th>
+      <th>No HP</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%i = 1; %> <%data.forEach(element => { %>
+    <tr>
+      <td><%= i %></td>
+      <td><%= element.nama %></td>
+      <td><%= element.noHP %></td>
+      <td>
+        <a
+          href="/contact/<%= element.nama %> "
+          class="btn btn-success badge rounded-pill"
+          >Detail</a
+        >
+      </td>
+    </tr>
+    <%i++; %> <%}) %>
+  </tbody>
+</table>
+<%- include('layouts/footer') %>
